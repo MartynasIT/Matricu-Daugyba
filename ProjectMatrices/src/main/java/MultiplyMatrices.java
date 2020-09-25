@@ -7,12 +7,14 @@ import static java.time.temporal.ChronoUnit.SECONDS;
 public class MultiplyMatrices {
     // Class variables
     private short arr_size;
-    private int [][] matrix_one = new int [arr_size][arr_size];
-    private int [][] matrix_two = new int [arr_size][arr_size];
+    private int [][] matrix_one;
+    private int [][] matrix_two;
 
     // simple constructor to set size
     public MultiplyMatrices (short arr_size) {
         this.arr_size = arr_size;
+        this.matrix_one = new int [arr_size][arr_size];
+        this.matrix_two = new int [arr_size][arr_size];
     }
 
     // encapsulation getters and setters
@@ -45,23 +47,25 @@ public class MultiplyMatrices {
         Random generator_1 = new Random();
         Random generator_2 = new Random();
         short arr_size =  getSize();
-        int [][] tempOne = new int [arr_size][arr_size];
-        int [][] tempTwo = new int [arr_size][arr_size];
+       // int [][] tempOne = new int [arr_size][arr_size];
+       // int [][] tempTwo = new int [arr_size][arr_size];
 
         for (int i = 0; i < arr_size; i++) {
 
             for (int j = 0; j < arr_size; j++) {
                 // since both arrays are same size
-                tempOne[i][j] = generator_1.nextInt(100);
-                tempTwo[i][j] = generator_2.nextInt(100);
+                matrix_one[i][j] = generator_1.nextInt(100);
+                matrix_two[i][j] = generator_2.nextInt(100);
             }
         }
+        /* Too slow going this way
         setFirst(tempOne);
-        setSecond(tempTwo);
+        // setSecond(tempTwo);
         // junk unneeded arrays
         tempOne = null;
         tempTwo = null;
         System.gc();
+         */
     }
 
     public void printMatrixes(int[][] matrix, short size) {
